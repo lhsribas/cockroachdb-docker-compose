@@ -58,7 +58,7 @@ $ docker network create -d bridge network_cockroachdb
 
 The command bellow start the cluster with two nodes, and the flag **--build** Build images before starting containers.
 
-```
+```bash
 $ docker-compose up --build
 ```
 
@@ -66,7 +66,7 @@ $ docker-compose up --build
 
 Since the containers are running in the foreground, you’ll need to open another tab or terminal window and use the following command to list the nodes’ containers:
 
-```
+```bash
 $ docker ps
 ```
 
@@ -74,7 +74,7 @@ $ docker ps
 
 If you encounter a port conflict, you can try to stop and remove the containers for the nodes using docker stop and docker rm. You can also use lsof to look for the processes using the 26257 Cockroach port as seen below:
 
-```
+```bash
 $ lsof -i -sTCP:LISTEN | grep 26257
 ```
 
@@ -82,7 +82,7 @@ $ lsof -i -sTCP:LISTEN | grep 26257
 
 You can use the following command to initialize your cluster if needed:
 
-```
+```bash
 $ docker exec -it node_1 ./cockroach init --insecure
 ```
 
@@ -90,7 +90,7 @@ $ docker exec -it node_1 ./cockroach init --insecure
 
 We’ll use the docker exec command to connect and interact with the node_1 container by taking advantage of the -it interactive options:
 
-```
+```bash
 $ docker exec -it node_1 /bin/bash
 ```
 
@@ -98,10 +98,10 @@ $ docker exec -it node_1 /bin/bash
 
 Once you’re inside the container, use the ./cockroach sql command to enter the SQL interactive shell for the CockroachDB node:
 
-```
+```bash
 $ ./cockroach sql --insecure
 ```
 
-```
+```bash
 $ CREATE DATABASE some_db;
 ```
