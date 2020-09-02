@@ -11,7 +11,7 @@ services:
           - "26257:26257"
           - "8080:8080"
       networks:
-          cockroachdb_net:
+          network_cockroachdb:
               aliases:
                   - node_1
 
@@ -22,7 +22,7 @@ services:
           - ./data/node_2:/cockroach/cockroach-data
       command: start --insecure --join=node_1
       networks:
-          cockroachdb_net:
+          network_cockroachdb:
               aliases:
                   - node_2
 
